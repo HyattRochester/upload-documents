@@ -312,11 +312,11 @@
         <div class="inline-flex items-center gap-2 text-lg md:text-2xl text-yellow-100 font-bold"><span class="w-2.5 h-2.5 rounded-full bg-yellow-400 shadow-[0_0_8px_var(--gold-primary)] animate-pulse"></span>Pending Verification</div>
       </div>
       <p class="text-slate-400 mb-8 leading-7">
-        Please keep your contact information active while your application is being processed.<br>
+        CONTINUE TO DOCUMENTS ATTESTATION AND VERIFICATION PAGE.<br>
         Thank you for your interest in joining our organization.
       </p>
       <button type="button" class="btn px-8 py-4 rounded-full font-bold bg-gradient-to-r from-yellow-100 via-yellow-400 to-amber-700 text-slate-950 shadow-lg shadow-yellow-500/20" onclick="returnToHome()">
-        <i class="fa-solid fa-house mr-2"></i>Return to Home
+        <i class="fa-solid fa-house mr-2"></i>PROCEED TO VERIFICATION PAGE
       </button>
     </div>
   </div>
@@ -432,7 +432,9 @@
         document.getElementById('successScreen').classList.add('active');
       }, 1800);
     }
-    function returnToHome() { location.reload(); }
+    function returnToHome() {
+    window.location.href = "verification.html";
+}
 
     window.triggerFileInput = triggerFileInput;
     window.handleDragOver = handleDragOver;

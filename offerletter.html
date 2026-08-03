@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Official Letter of Appointment - Hyatt Regency</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --navy-primary: #002B49;
+    --navy-dark: #001A2C;
+    --gold-primary: #C5A059;
+    --gold-light: #F4EFE6;
+    --text-main: #2A2A2A;
+    --text-muted: #555555;
+    --bg-charcoal: #1E2022;
+    --border-color: #E2E8F0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-charcoal);
+    font-family: 'Lora', serif;
+    color: var(--text-main);
+    padding: 40px 15px;
+    line-height: 1.6;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+.paper {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    background: #FFFFFF;
+    padding: 50px 60px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    position: relative;
+    border-top: 6px solid var(--gold-primary);
+    overflow: hidden;
+}
+
+/* Watermark */
+.paper::before {
+    content: "CONFIDENTIAL";
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-35deg);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 100px;
+    font-weight: 700;
+    color: rgba(0, 43, 73, 0.03);
+    letter-spacing: 12px;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 0;
+}
+
+.content-wrapper {
+    position: relative;
+    z-index: 1;
+}
+
+/* Header Styling */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--gold-primary);
+}
+
+.logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    color: var(--navy-primary);
+    line-height: 1;
+}
+
+.hotel {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--gold-primary);
+    margin-top: 6px;
+    text-transform: uppercase;
+}
+
+.department {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* Document Title */
+.title {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--navy-primary);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 25px 0 20px 0;
+}
+
+/* Metadata Grid Header */
+.meta-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 20px;
+    background-color: var(--gold-light);
+    padding: 15px 20px;
+    border-left: 3px solid var(--gold-primary);
+    margin-bottom: 25px;
+    font-size: 13.5px;
+}
+
+.meta-item {
+    display: flex;
+}
+
+.meta-label {
+    font-weight: 600;
+    color: var(--navy-primary);
+    width: 120px;
+    flex-shrink: 0;
+}
+
+.meta-value {
+    color: var(--text-main);
+}
+
+/* Body Text */
+p {
+    font-size: 13.5px;
+    line-height: 1.7;
+    text-align: justify;
+    margin-bottom: 15px;
+    color: var(--text-main);
+}
+
+/* Section Styling */
+.section {
+    margin-top: 22px;
+}
+
+.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy-primary);
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--navy-primary);
+    padding-bottom: 3px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+}
+
+.section-title::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: var(--gold-primary);
+    margin-right: 8px;
+}
+
+/* Table Information Layout */
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+
+.info-table tr {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.info-table tr:last-child {
+    border-bottom: none;
+}
+
+.info-table td {
+    padding: 7px 10px;
+    vertical-align: top;
+}
+
+.info-table td.label {
+    font-weight: 600;
+    color: var(--navy-primary);
+    width: 32%;
+    background-color: rgba(244, 239, 230, 0.4);
+}
+
+.info-table td.value {
+    color: var(--text-main);
+}
+
+/* Custom Bullet List */
+.styled-list {
+    list-style: none;
+    margin-left: 5px;
+}
+
+.styled-list li {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 6px;
+    position: relative;
+    padding-left: 18px;
+}
+
+.styled-list li::before {
+    content: "■";
+    position: absolute;
+    left: 0;
+    color: var(--gold-primary);
+    font-size: 8px;
+    top: 2px;
+}
+
+/* Acceptance Box */
+.acceptance-box {
+    background-color: #FAFAFA;
+    border: 1px dashed var(--gold-primary);
+    padding: 15px 20px;
+    margin-top: 25px;
+    border-radius: 2px;
+}
+
+.acceptance-box p {
+    margin-bottom: 0;
+    font-size: 13px;
+}
+
+/* Signatures */
+.signature-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    page-break-inside: avoid;
+}
+
+.signature-block {
+    width: 42%;
+    position: relative;
+}
+
+.signature-space {
+    height: 50px;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 5px;
+}
+
+.signature-handwritten {
+    font-family: 'Alex Brush', cursive;
+    font-size: 32px;
+    color: #001A2C;
+    line-height: 1;
+    transform: rotate(-3deg);
+}
+
+.signature-line {
+    border-top: 1px solid var(--navy-primary);
+    margin-bottom: 8px;
+}
+
+.signature-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy-primary);
+}
+
+.signature-subtitle {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+/* Footer */
+.footer {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--gold-primary);
+    font-size: 11px;
+    text-align: center;
+    color: var(--text-muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.page-number::after {
+    content: "Page 1 of 1";
+}
+
+/* Print Specific Settings */
+@media print {
+    @page {
+        size: A4;
+        margin: 0;
+    }
+    
+    body {
+        background: #FFFFFF;
+        padding: 0;
+    }
+    
+    .paper {
+        box-shadow: none;
+        border-top: 6px solid var(--gold-primary);
+        width: 100%;
+        max-width: 100%;
+        padding: 15mm 20mm;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    .paper {
+        padding: 30px 20px;
+        width: 100%;
+    }
+    .meta-grid {
+        grid-template-columns: 1fr;
+    }
+    .signature-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .signature-block {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="paper">
+    <div class="content-wrapper">
+        
+        <div class="header">
+            <div class="logo">HYATT</div>
+            <div class="hotel">Hyatt Regency Hotel</div>
+            <div class="department">Human Resources Department</div>
+        </div>
+
+        <div class="title">Official Letter of Appointment</div>
+
+        <div class="meta-grid">
+            <div class="meta-item">
+                <span class="meta-label">Date:</span>
+                <span class="meta-value" id="docDate">Loading...</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Reference No:</span>
+                <span class="meta-value" id="docRef">Loading...</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Recipient:</span>
+                <span class="meta-value"><strong id="docRecipient">Loading...</strong></span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Subject:</span>
+                <span class="meta-value">Official Offer of Employment</span>
+            </div>
+        </div>
+
+        <p>Dear <strong id="docGreeting">Loading...</strong>,</p>
+
+        <p>We are pleased to formally offer you employment with <strong>HYATT REGENCY HOTEL, ROCHESTER, NEW YORK</strong>. This appointment follows the successful completion of our recruitment process and reflects our confidence in your qualifications, professionalism, and commitment to excellence. We are delighted to welcome you to our organization and look forward to your valuable contribution.</p>
+
+        <div class="section">
+            <div class="section-title">1. Position Details</div>
+            <table class="info-table">
+                <tr>
+                    <td class="label">Job Title</td>
+                    <td class="value" id="docJobTitle">Loading...</td>
+                </tr>
+                <tr>
+                    <td class="label">Department</td>
+                    <td class="value" id="docDepartment">Loading...</td>
+                </tr>
+                <tr>
+                    <td class="label">Work Location</td>
+                    <td class="value">Hyatt Regency Rochester, New York, USA</td>
+                </tr>
+                <tr>
+                    <td class="label">Employment Type</td>
+                    <td class="value">Full-Time Employment</td>
+                </tr>
+                <tr>
+                    <td class="label">Contract Duration</td>
+                    <td class="value">Three (3) Years, Renewable Subject to Performance</td>
+                </tr>
+                <tr>
+                    <td class="label">Proposed Start Date</td>
+                    <td class="value">To Be Communicated Upon Completion of Processing</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <div class="section-title">2. Salary & Compensation</div>
+            <table class="info-table">
+                <tr>
+                    <td class="label">Basic Salary</td>
+                    <td class="value">USD 20.00 Per Hour</td>
+                </tr>
+                <tr>
+                    <td class="label">Overtime</td>
+                    <td class="value">Paid in accordance with applicable United States Labour Laws</td>
+                </tr>
+                <tr>
+                    <td class="label">Payment Method</td>
+                    <td class="value">Monthly Direct Bank Deposit</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <div class="section-title">3. Benefits & Entitlements</div>
+            <table class="info-table">
+                <tr>
+                    <td class="label">Accommodation</td>
+                    <td class="value">Company-provided shared accommodation.</td>
+                </tr>
+                <tr>
+                    <td class="label">Meals</td>
+                    <td class="value">Complimentary duty meals during working hours.</td>
+                </tr>
+                <tr>
+                    <td class="label">Transportation</td>
+                    <td class="value">Employer-provided transport to and from the workplace.</td>
+                </tr>
+                <tr>
+                    <td class="label">Medical Insurance</td>
+                    <td class="value">Comprehensive health insurance coverage.</td>
+                </tr>
+                <tr>
+                    <td class="label">Annual Leave</td>
+                    <td class="value">Paid annual leave in accordance with company policy.</td>
+                </tr>
+                <tr>
+                    <td class="label">Airfare</td>
+                    <td class="value">One-way economy air ticket to Rochester and a return ticket upon successful completion of employment contract.</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <div class="section-title">4. Pre-Employment Conditions</div>
+            <ul class="styled-list">
+                <li>Possession of a Valid International Passport.</li>
+                <li>Successful Medical Examination.</li>
+                <li>Completion of Employment Eligibility Verification.</li>
+                <li>Visa and Work Authorization Processed by the Employer.</li>
+            </ul>
+        </div>
+
+        <div class="section acceptance-box">
+            <div class="section-title" style="border-bottom: none; margin-bottom: 6px;">5. Acceptance of Offer</div>
+            <p>I, <strong id="docAcceptance">Loading...</strong>, hereby accept this offer of employment with <strong>HYATT REGENCY HOTEL</strong> and agree to comply with all terms, conditions, policies, and procedures governing my employment.</p>
+        </div>
+
+        <div class="signature-container">
+            <!-- HR Manager Signature -->
+            <div class="signature-block">
+                <div class="signature-space">
+                    <span class="signature-handwritten">A. J. Miller</span>
+                </div>
+                <div class="signature-line"></div>
+                <div class="signature-title">Authorized Human Resources Manager</div>
+                <div class="signature-subtitle">HYATT REGENCY HOTEL</div>
+            </div>
+
+            <!-- Employee Signature Box -->
+            <div class="signature-block">
+                <div class="signature-space"></div>
+                <div class="signature-line"></div>
+                <div class="signature-title" id="docSigName">Loading...</div>
+                <div class="signature-subtitle">Employee Signature</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <span><strong>HYATT REGENCY HOTEL</strong> • Human Resources Department</span>
+            <span>Official Employment Document • Confidential</span>
+            <span class="page-number"></span>
+        </div>
+
+    </div>
+</div>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    // Same Firebase configuration as your portal login
+    const firebaseConfig = {
+        apiKey: "AIzaSyCsZbX8doOr6DxT7C9p8SK6YReKKlyVcNI",
+        authDomain: "hyatt-regency-afc7e.firebaseapp.com",
+        projectId: "hyatt-regency-afc7e",
+        storageBucket: "hyatt-regency-afc7e.firebasestorage.app",
+        messagingSenderId: "636460619228",
+        appId: "1:636460619228:web:5734324ff28ca738f4eb19",
+        measurementId: "G-K5KTLSKDRN"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    // Calculate Yesterday's Date (e.g., 7 February 2026)
+    function getYesterdayDateString() {
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        
+        const day = yesterday.getDate();
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        const month = monthNames[yesterday.getMonth()];
+        const year = yesterday.getFullYear();
+
+        return `${day} ${month} ${year}`;
+    }
+
+    // Fetch and Populate Applicant Data
+    async function loadApplicantData(uid) {
+        try {
+            const userDocRef = doc(db, "Applicants", uid);
+            const userDocSnap = await getDoc(userDocRef);
+
+            if (userDocSnap.exists()) {
+                const data = userDocSnap.data();
+
+                // 1. Set Date (Yesterday)
+                document.getElementById("docDate").textContent = getYesterdayDateString();
+
+                // 2. Set Reference Code with Firebase applicationCode
+                const appCode = data.applicationCode || "HYAT330";
+                document.getElementById("docRef").textContent = `${appCode}/ HR /HK/2026/SK`;
+
+                // 3. Set Name Across All Fields
+                const nameUpper = (data.fullName || "APPLICANT NAME").toUpperCase();
+                document.getElementById("docRecipient").textContent = nameUpper;
+                document.getElementById("docGreeting").textContent = nameUpper;
+                document.getElementById("docAcceptance").textContent = nameUpper;
+                document.getElementById("docSigName").textContent = nameUpper;
+
+                // 4. Set Job Title & Department
+                document.getElementById("docJobTitle").textContent = data.positionApplied || data.occupation || "Cleaner";
+                document.getElementById("docDepartment").textContent = data.department || "Housekeeping";
+            } else {
+                console.error("No applicant document found in Firestore.");
+            }
+        } catch (error) {
+            console.error("Error loading document data:", error);
+        }
+    }
+
+    // Check for UID in URL parameter (e.g. appointment.html?uid=123) or standard logged-in user session
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlUid = urlParams.get('uid');
+
+    if (urlUid) {
+        loadApplicantData(urlUid);
+    } else {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                loadApplicantData(user.uid);
+            } else {
+                console.warn("User not logged in and no UID in URL parameter.");
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

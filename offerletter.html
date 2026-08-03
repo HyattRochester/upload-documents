@@ -36,6 +36,37 @@ body {
     print-color-adjust: exact;
 }
 
+/* Navigation Buttons Container */
+.nav-buttons {
+    max-width: 210mm;
+    margin: 0 auto 20px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--gold-primary);
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 10px 22px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-nav:hover {
+    background-color: var(--navy-primary);
+    color: #FFFFFF;
+}
+
 .paper {
     width: 210mm;
     min-height: 297mm;
@@ -324,6 +355,10 @@ p {
         padding: 0;
     }
     
+    .nav-buttons {
+        display: none !important;
+    }
+
     .paper {
         box-shadow: none;
         border-top: 6px solid var(--gold-primary);
@@ -356,6 +391,12 @@ p {
 </head>
 
 <body>
+
+<!-- Navigation Bar with Back & Next Buttons -->
+<div class="nav-buttons">
+    <a href="attestation.html" class="btn-nav">&larr; Back</a>
+    <a href="attestation.html" class="btn-nav">Next &rarr;</a>
+</div>
 
 <div class="paper">
     <div class="content-wrapper">

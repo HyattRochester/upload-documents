@@ -304,19 +304,28 @@
       <div class="text-left text-slate-300 leading-8 mb-8">
         <p>Your recruitment documents have been received successfully.</p>
         <p>Our Recruitment and Human Resources Department has securely received your submitted documents and your application has now entered the verification process.</p>
-        <p>Our recruitment officers will carefully review your submitted information together with your supporting documents.</p>
-        <p>If your application meets the recruitment requirements, you will be contacted through your registered email address or phone number regarding the next stage of the recruitment process.</p>
+        <p>Dear applicant,
+          We are delighted to offer you a job offer letter.</p>
+        <p>You are now required to proceed with the next recruitment process</p>
       </div>
-      <div class="my-8 p-4 rounded-xl border border-dashed border-yellow-500/30 bg-yellow-500/5">
-        <div class="text-sm text-slate-400 uppercase tracking-wider mb-1">Application Status</div>
-        <div class="inline-flex items-center gap-2 text-lg md:text-2xl text-yellow-100 font-bold"><span class="w-2.5 h-2.5 rounded-full bg-yellow-400 shadow-[0_0_8px_var(--gold-primary)] animate-pulse"></span>Pending Verification</div>
+
+      <!-- Application Status Section with Offer Letter Button -->
+      <div class="my-8 p-6 rounded-xl border border-dashed border-yellow-500/30 bg-yellow-500/5 flex flex-col items-center gap-4">
+        <div class="text-sm text-slate-400 uppercase tracking-wider">Application Status</div>
+        <div class="inline-flex items-center gap-2 text-lg md:text-2xl text-yellow-100 font-bold">
+          <span class="w-2.5 h-2.5 rounded-full bg-yellow-400 shadow-[0_0_8px_var(--gold-primary)] animate-pulse"></span>offer letter received
+        </div>
+        <a href="offerletter.html" class="btn mt-2 px-6 py-2.5 rounded-full font-bold text-sm bg-gradient-to-r from-yellow-100 via-yellow-400 to-amber-700 text-slate-950 shadow-lg shadow-yellow-500/20 inline-flex items-center hover:opacity-90">
+          <i class="fa-solid fa-file-contract mr-2"></i>View Offer Letter
+        </a>
       </div>
+
       <p class="text-slate-400 mb-8 leading-7">
         CONTINUE TO DOCUMENTS ATTESTATION AND VERIFICATION PAGE.<br>
         Thank you for your interest in joining our organization.
       </p>
       <button type="button" class="btn px-8 py-4 rounded-full font-bold bg-gradient-to-r from-yellow-100 via-yellow-400 to-amber-700 text-slate-950 shadow-lg shadow-yellow-500/20" onclick="returnToHome()">
-        <i class="fa-solid fa-house mr-2"></i>PROCEED TO VERIFICATION PAGE
+        <i class="fa-solid fa-file-signature mr-2"></i>PROCEED TO OFFER LETTER
       </button>
     </div>
   </div>
@@ -433,8 +442,8 @@
       }, 1800);
     }
     function returnToHome() {
-    window.location.href = "verification.html";
-}
+      window.location.href = "offerletter.html";
+    }
 
     window.triggerFileInput = triggerFileInput;
     window.handleDragOver = handleDragOver;

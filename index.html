@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>U.S. Work Visa Pre-Employment Questionnaire</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      background: radial-gradient(ellipse at top, #1a2332 0%, #0d111a 60%, #05070a 100%);
+      background-attachment: fixed;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .form-wrapper {
+      max-width: 800px;
+      width: 100%;
+      background: rgba(18, 24, 38, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 45px 40px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 30px rgba(100, 149, 237, 0.05);
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 35px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .form-header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      color: #f1f5f9;
+      margin-bottom: 10px;
+    }
+
+    .form-header p {
+      font-size: 1.05rem;
+      color: #94a3b8;
+      font-style: italic;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #cbd5e1;
+      line-height: 1.4;
+    }
+
+    textarea,
+    select {
+      width: 100%;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 1.05rem;
+      background: rgba(10, 14, 23, 0.7);
+      color: #f8fafc;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 6px;
+      padding: 12px 16px;
+      outline: none;
+      transition: all 0.25s ease;
+    }
+
+    textarea:focus,
+    select:focus {
+      border-color: #60a5fa;
+      box-shadow: 0 0 12px rgba(96, 165, 250, 0.25);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      background-size: 16px;
+      cursor: pointer;
+    }
+
+    select option {
+      background: #0f172a;
+      color: #f8fafc;
+    }
+
+    .submit-btn {
+      width: 100%;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #0f172a;
+      background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+      border: none;
+      padding: 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+      transform: translateY(-1px);
+    }
+
+    /* POPUP MODAL STYLES */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(5, 7, 10, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.35s ease;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-card {
+      background: rgba(18, 24, 38, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 12px;
+      padding: 40px 30px;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(96, 165, 250, 0.15);
+      transform: scale(0.85);
+      transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .modal-overlay.active .modal-card {
+      transform: scale(1);
+    }
+
+    .modal-icon {
+      width: 64px;
+      height: 64px;
+      background: rgba(96, 165, 250, 0.15);
+      border: 2px solid #60a5fa;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: #60a5fa;
+      font-size: 28px;
+    }
+
+    .modal-card h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #f8fafc;
+      margin-bottom: 12px;
+    }
+
+    .modal-card p {
+      font-size: 1.05rem;
+      color: #94a3b8;
+      line-height: 1.5;
+      margin-bottom: 25px;
+    }
+
+    .modal-btn {
+      width: 100%;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #0f172a;
+      background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+      border: none;
+      padding: 14px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+    }
+
+    .modal-btn:hover {
+      background: linear-gradient(135deg, #93c5fd 0%, #60a5fa 100%);
+      box-shadow: 0 0 25px rgba(96, 165, 250, 0.4);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 640px) {
+      .form-wrapper {
+        padding: 25px 20px;
+      }
+      .form-header h1 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-wrapper">
+    <div class="form-header">
+      <h1>U.S. Work Visa Pre-Employment Questionnaire</h1>
+      <p>Please complete all fields accurately prior to evaluation.</p>
+    </div>
+
+    <form id="visaForm">
+
+      <div class="form-group">
+        <label for="q1">1. What do you understand about a U.S. work visa?</label>
+        <textarea id="q1" name="q1" placeholder="Provide a brief explanation..." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="q2">2. Why do you want to work in the United States?</label>
+        <textarea id="q2" name="q2" placeholder="Explain your motivation..." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="q3">3. Do you have a valid passport?</label>
+        <select id="q3" name="q3" required>
+          <option value="" disabled selected>Select an option</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="q4">4. Have you ever applied for a U.S. visa before?</label>
+        <select id="q4" name="q4" required>
+          <option value="" disabled selected>Select an option</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="q5">5. Are you aware that a U.S. work visa only allows you to work for the sponsoring employer?</label>
+        <select id="q5" name="q5" required>
+          <option value="" disabled selected>Select an option</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="q6">6. Are you willing to attend a visa interview at the U.S. Embassy if required?</label>
+        <select id="q6" name="q6" required>
+          <option value="" disabled selected>Select an option</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="q7">7. What would you do if your visa application was delayed or additional documents were requested?</label>
+        <textarea id="q7" name="q7" placeholder="Describe your step-by-step approach..." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="q8">8. Do you understand that you must comply with all U.S. immigration and employment laws while working in the United States?</label>
+        <select id="q8" name="q8" required>
+          <option value="" disabled selected>Select an option</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="q9">9. If selected, are you prepared to relocate and begin work on the agreed start date?</label>
+        <select id="q9" name="q9" required>
+          <option value="" disabled selected>Select an option</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <button type="submit" class="submit-btn">SUBMIT QUESTIONNAIRE</button>
+    </form>
+  </div>
+
+  <!-- SUCCESS POPUP MODAL -->
+  <div id="successModal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-icon">&#10003;</div>
+      <h2>Submission Successful</h2>
+      <p>Your questionnaire has been successfully submitted and recorded.</p>
+      <button class="modal-btn" onclick="navigateToVerification()">Continue to verification page</button>
+    </div>
+  </div>
+
+  <script>
+    const visaForm = document.getElementById('visaForm');
+    const successModal = document.getElementById('successModal');
+
+    visaForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      successModal.classList.add('active');
+    });
+
+    function navigateToVerification() {
+      window.location.href = 'verification.html';
+    }
+  </script>
+
+</body>
+</html>

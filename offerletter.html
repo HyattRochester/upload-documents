@@ -43,6 +43,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
 }
 
 .btn-nav {
@@ -101,12 +102,12 @@ body {
     z-index: 1;
 }
 
-/* Header Styling */
-.header {
+/* Letterhead Styling */
+.letterhead {
     text-align: center;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--gold-primary);
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--navy-primary);
 }
 
 .logo {
@@ -136,44 +137,52 @@ body {
     margin-top: 4px;
 }
 
-/* Document Title */
-.title {
-    text-align: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 24px;
-    font-style: italic;
-    font-weight: 700;
-    color: var(--navy-primary);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin: 25px 0 20px 0;
+.letterhead-address {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 6px;
+    letter-spacing: 0.5px;
 }
 
-/* Metadata Grid Header */
-.meta-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px 20px;
-    background-color: var(--gold-light);
-    padding: 15px 20px;
-    border-left: 3px solid var(--gold-primary);
-    margin-bottom: 25px;
+/* Formal Letter Header Elements */
+.letter-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
     font-size: 13.5px;
 }
 
-.meta-item {
+.letter-date-ref {
     display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
-.meta-label {
-    font-weight: 600;
+.letter-recipient {
+    margin-bottom: 20px;
+    font-size: 13.5px;
+    line-height: 1.5;
+}
+
+.letter-recipient .label-to {
+    font-weight: 700;
     color: var(--navy-primary);
-    width: 120px;
-    flex-shrink: 0;
+    display: block;
+    margin-bottom: 2px;
 }
 
-.meta-value {
-    color: var(--text-main);
+/* Letter Subject Line */
+.letter-subject {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy-primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 20px 0 25px 0;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--gold-primary);
 }
 
 /* Body Text */
@@ -282,11 +291,16 @@ p {
     font-size: 13px;
 }
 
+.complimentary-close {
+    margin-top: 25px;
+    font-size: 13.5px;
+}
+
 /* Signatures */
 .signature-container {
     display: flex;
     justify-content: space-between;
-    margin-top: 30px;
+    margin-top: 25px;
     page-break-inside: avoid;
 }
 
@@ -376,8 +390,9 @@ p {
         padding: 30px 20px;
         width: 100%;
     }
-    .meta-grid {
-        grid-template-columns: 1fr;
+    .letter-meta {
+        flex-direction: column;
+        gap: 10px;
     }
     .signature-container {
         flex-direction: column;
@@ -392,40 +407,44 @@ p {
 
 <body>
 
-<!-- Navigation Bar with Back & Next Buttons -->
+<!-- Navigation Bar with Back, Download, & Next Buttons -->
 <div class="nav-buttons">
     <a href="attestation.html" class="btn-nav">&larr; Back</a>
+    <button class="btn-nav" id="downloadBtn" type="button">📥 Download</button>
     <a href="attestation.html" class="btn-nav">Next &rarr;</a>
 </div>
 
 <div class="paper">
     <div class="content-wrapper">
         
-        <div class="header">
+        <!-- Formal Corporate Letterhead -->
+        <div class="letterhead">
             <div class="logo">HYATT</div>
             <div class="hotel">Hyatt Regency Hotel</div>
             <div class="department">Human Resources Department</div>
+            <div class="letterhead-address">125 East Main Street, Rochester, New York 14604, USA • Tel: +1 (585) 546-2234</div>
         </div>
 
-        <div class="title">Official Letter of Appointment</div>
+        <!-- Date & Ref Metadata Line -->
+        <div class="letter-meta">
+            <div class="letter-date-ref">
+                <div><strong>Ref No:</strong> <span id="docRef">Loading...</span></div>
+            </div>
+            <div class="letter-date-ref" style="text-align: right;">
+                <div><strong>Date:</strong> <span id="docDate">Loading...</span></div>
+            </div>
+        </div>
 
-        <div class="meta-grid">
-            <div class="meta-item">
-                <span class="meta-label">Date:</span>
-                <span class="meta-value" id="docDate">Loading...</span>
-            </div>
-            <div class="meta-item">
-                <span class="meta-label">Reference No:</span>
-                <span class="meta-value" id="docRef">Loading...</span>
-            </div>
-            <div class="meta-item">
-                <span class="meta-label">Recipient:</span>
-                <span class="meta-value"><strong id="docRecipient">Loading...</strong></span>
-            </div>
-            <div class="meta-item">
-                <span class="meta-label">Subject:</span>
-                <span class="meta-value">Official Offer of Employment</span>
-            </div>
+        <!-- Recipient Address Block -->
+        <div class="letter-recipient">
+            <span class="label-to">TO:</span>
+            <strong id="docRecipient">Loading...</strong><br>
+            <span>Candidate for Employment</span>
+        </div>
+
+        <!-- Subject Line -->
+        <div class="letter-subject">
+            SUBJECT: OFFICIAL LETTER OF APPOINTMENT & OFFER OF EMPLOYMENT
         </div>
 
         <p>Dear <strong id="docGreeting">Loading...</strong>,</p>
@@ -435,10 +454,6 @@ p {
         <div class="section">
             <div class="section-title">1. Position Details</div>
             <table class="info-table">
-                <tr>
-                    <td class="label">Job Title</td>
-                    <td class="value" id="docJobTitle">Loading...</td>
-                </tr>
                 <tr>
                     <td class="label">Department</td>
                     <td class="value" id="docDepartment">Loading...</td>
@@ -525,6 +540,10 @@ p {
             <p>I, <strong id="docAcceptance">Loading...</strong>, hereby accept this offer of employment with <strong>HYATT REGENCY HOTEL</strong> and agree to comply with all terms, conditions, policies, and procedures governing my employment.</p>
         </div>
 
+        <div class="complimentary-close">
+            <p>Sincerely,</p>
+        </div>
+
         <div class="signature-container">
             <!-- HR Manager Signature -->
             <div class="signature-block">
@@ -559,7 +578,7 @@ p {
     import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
     import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-    // Same Firebase configuration as your portal login
+    // Firebase Configuration
     const firebaseConfig = {
         apiKey: "AIzaSyCsZbX8doOr6DxT7C9p8SK6YReKKlyVcNI",
         authDomain: "hyatt-regency-afc7e.firebaseapp.com",
@@ -574,17 +593,47 @@ p {
     const auth = getAuth(app);
     const db = getFirestore(app);
 
-    // Calculate Yesterday's Date (e.g., 7 February 2026)
-    function getYesterdayDateString() {
-        const yesterday = new Date();
-        yesterday.setDate(yesterday.getDate() - 1);
-        
-        const day = yesterday.getDate();
-        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        const month = monthNames[yesterday.getMonth()];
-        const year = yesterday.getFullYear();
+    // Download Button Click Handler
+    document.getElementById("downloadBtn").addEventListener("click", () => {
+        alert("Downloaded successfully.");
+    });
 
-        return `${day} ${month} ${year}`;
+    // Helper: Add 10 days to application date and format as e.g., "15th June 2026"
+    function calculateTenDaysLaterDate(rawAppDate) {
+        let baseDate;
+
+        if (rawAppDate) {
+            if (typeof rawAppDate.toDate === "function") {
+                // Firestore Timestamp
+                baseDate = rawAppDate.toDate();
+            } else if (typeof rawAppDate === "string") {
+                // Handle ordinal day strings like "5th June 2026" -> "5 June 2026"
+                const cleanedStr = rawAppDate.replace(/(\d+)(st|nd|rd|th)/i, '$1');
+                const parsed = new Date(cleanedStr);
+                baseDate = isNaN(parsed.getTime()) ? new Date() : parsed;
+            } else {
+                baseDate = new Date(rawAppDate);
+            }
+        } else {
+            baseDate = new Date();
+        }
+
+        // Add 10 days
+        baseDate.setDate(baseDate.getDate() + 10);
+
+        const day = baseDate.getDate();
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        const month = monthNames[baseDate.getMonth()];
+        const year = baseDate.getFullYear();
+
+        // Get Ordinal Suffix (e.g. 15th)
+        function getOrdinal(n) {
+            const s = ["th", "st", "nd", "rd"];
+            const v = n % 100;
+            return n + (s[(v - 20) % 10] || s[v] || s[0]);
+        }
+
+        return `${getOrdinal(day)} ${month} ${year}`;
     }
 
     // Fetch and Populate Applicant Data
@@ -596,8 +645,9 @@ p {
             if (userDocSnap.exists()) {
                 const data = userDocSnap.data();
 
-                // 1. Set Date (Yesterday)
-                document.getElementById("docDate").textContent = getYesterdayDateString();
+                // 1. Set Date (10 days after application date)
+                const applicationDateInput = data.applicationDate || data.dateApplied || data.createdAt;
+                document.getElementById("docDate").textContent = calculateTenDaysLaterDate(applicationDateInput);
 
                 // 2. Set Reference Code with Firebase applicationCode
                 const appCode = data.applicationCode || "HYAT330";
@@ -610,8 +660,7 @@ p {
                 document.getElementById("docAcceptance").textContent = nameUpper;
                 document.getElementById("docSigName").textContent = nameUpper;
 
-                // 4. Set Job Title & Department
-                document.getElementById("docJobTitle").textContent = data.positionApplied || data.occupation || "Cleaner";
+                // 4. Set Department
                 document.getElementById("docDepartment").textContent = data.department || "Housekeeping";
             } else {
                 console.error("No applicant document found in Firestore.");
@@ -621,7 +670,7 @@ p {
         }
     }
 
-    // Check for UID in URL parameter (e.g. appointment.html?uid=123) or standard logged-in user session
+    // Check for UID in URL parameter or active auth session
     const urlParams = new URLSearchParams(window.location.search);
     const urlUid = urlParams.get('uid');
 

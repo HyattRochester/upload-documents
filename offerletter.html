@@ -411,6 +411,9 @@ p {
 <div class="nav-buttons">
     <a href="attestation.html" class="btn-nav">&larr; Back</a>
     <button class="btn-nav" id="downloadBtn" type="button">📥 Download</button>
+    <div id="downloadMessage" style="display:none; color:#16a34a; font-weight:600; margin-top:10px; text-align:center;">
+    Downloaded successfully.
+</div>
     <a href="attestation.html" class="btn-nav">Next &rarr;</a>
 </div>
 
@@ -599,8 +602,13 @@ p {
 
     // Download Button Click Handler
     document.getElementById("downloadBtn").addEventListener("click", () => {
-        alert("Downloaded successfully.");
-    });
+    const msg = document.getElementById("downloadMessage");
+    msg.style.display = "block";
+
+    setTimeout(() => {
+        msg.style.display = "none";
+    }, 3000);
+});
 
     // Helper: Add 10 days to application date and format as e.g., "15th June 2026"
     function calculateTenDaysLaterDate(rawAppDate) {

@@ -455,6 +455,10 @@ p {
             <div class="section-title">1. Position Details</div>
             <table class="info-table">
                 <tr>
+    <td class="label">Job Title</td>
+    <td class="value" id="docJobTitle">Loading...</td>
+</tr>
+                <tr>
                     <td class="label">Department</td>
                     <td class="value" id="docDepartment">Loading...</td>
                 </tr>
@@ -661,7 +665,37 @@ p {
                 document.getElementById("docSigName").textContent = nameUpper;
 
                 // 4. Set Department
-                document.getElementById("docDepartment").textContent = data.department || "Housekeeping";
+                const position = data.appliedPosition || "";
+                document.getElementById("docJobTitle").textContent =
+    position || "Not Assigned";
+   
+let department = "General Operations";
+
+switch (position) {
+    case "Room & Housekeeping Attendant":
+        department = "Housekeeping";
+        break;
+
+    case "Front Desk Receptionist":
+        department = "Front Office";
+        break;
+
+    case "Food & Beverage Waiter / Waitress":
+        department = "Food & Beverage";
+        break;
+
+    case "Guest Service Bell Boy":
+        department = "Guest Services";
+        break;
+
+    case "Swimming Pool Attendant":
+        department = "Recreation";
+        break;
+}
+
+// Display the department AFTER the switch
+document.getElementById("docDepartment").textContent = department;
+
             } else {
                 console.error("No applicant document found in Firestore.");
             }
